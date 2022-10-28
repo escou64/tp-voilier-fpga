@@ -1,1 +1,1 @@
-# tp-voilier-fpga
+# TP Voilier FPGA
