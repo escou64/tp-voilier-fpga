@@ -3,7 +3,7 @@
  * Created Date: 2022-11-01 06:27:51 pm                                        *
  * Author: Mathieu Escouteloup                                                 *
  * -----                                                                       *
- * Last Modified: 2022-11-01 09:04:10 pm                                       *
+ * Last Modified: 2022-11-01 09:33:35 pm                                       *
  * Modified By: Mathieu Escouteloup                                            *
  * -----                                                                       *
  * License: See LICENSE.md                                                     *
@@ -100,13 +100,12 @@ class SpiMaster (p: SpiParams) extends Module {
     //             DATA
     // ------------------------------
     is(s2DATA) {
-      when  (r_count === ((io.i_config.nCycle - 1.U) >> 1.U))  {
-        r_rdata(r_count_bit) := io.b_spi.miso
-      }
-
-      when (r_count === (io.i_config.nCycle - 1.U)) {
-        r_count_bit := r_count_bit + 1.U
-        when (r_count_bit === 7.U) {
+      m_dcnt.io.i_init := false.B
+      m_dcnt.io.i_en := false.B
+      when (m_ccnt.io.o_flag) {
+        m_dcnt.io.i_en := true.B
+        when (m_dcnt.io.o_val === 7.U) {
+          m_dcnt.io.i_init := true.B
           r_fsm := s3END
         }
       }
@@ -116,6 +115,7 @@ class SpiMaster (p: SpiParams) extends Module {
     //             END
     // ------------------------------
     is (s3END){
+      
       io.b_send.ready := 1.U
       io.b_rec.valid := 1.U
       io.b_spi.cs(io.i_config.SlaveID) := 0.B
