@@ -3,7 +3,7 @@
  * Created Date: 2022-11-01 06:27:51 pm                                        *
  * Author: Mathieu Escouteloup                                                 *
  * -----                                                                       *
- * Last Modified: 2022-11-01 09:11:45 pm                                       *
+ * Last Modified: 2022-11-01 09:33:03 pm                                       *
  * Modified By: Mathieu Escouteloup                                            *
  * -----                                                                       *
  * License: See LICENSE.md                                                     *
@@ -45,7 +45,7 @@ class SpiIO (nSlave: Int) extends Bundle {
 // ******************************
 class SpiMasterCtrlBus extends Bundle {
   val cmd = UInt(CMD.NBIT.W)
-  val mul = UInt(CMD.NBIT.W)
+  val mul = Bool()
 }
 
 class SpiMasterIO(p: GenParams) extends Bundle {
