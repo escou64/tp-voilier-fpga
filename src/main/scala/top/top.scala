@@ -3,7 +3,7 @@
  * Created Date: 2022-11-14 01:36:00 pm
  * Author: Mathieu Escouteloup
  * -----
- * Last Modified: 2022-11-14 05:07:41 pm
+ * Last Modified: 2022-11-15 03:01:39 pm
  * Modified By: Mathieu Escouteloup
  * -----
  * License: See LICENSE.md
@@ -145,17 +145,17 @@ class Top(p: TopParams) extends Module {
   // ------------------------------
   switch(r_fsm) {
     is (s1CMD)  {
-      m_spi.io.b_creq.get(0).valid := true.B
+      m_spi.io.b_creq.get(0).valid := m_spi.io.b_dreq.get(0).ready
       m_spi.io.b_creq.get(0).ctrl.get.cmd := SPI_CMD.W
       m_spi.io.b_creq.get(0).ctrl.get.mb := false.B
-      m_spi.io.b_dreq.get(0).valid := true.B
+      m_spi.io.b_dreq.get(0).valid := m_spi.io.b_creq.get(0).ready
       m_spi.io.b_dreq.get(0).data.get := 3.U
     }
     is (s2ADDR) {
-      m_spi.io.b_creq.get(0).valid := true.B
+      m_spi.io.b_creq.get(0).valid := m_spi.io.b_dreq.get(0).ready
       m_spi.io.b_creq.get(0).ctrl.get.cmd := SPI_CMD.W
       m_spi.io.b_creq.get(0).ctrl.get.mb := true.B
-      m_spi.io.b_dreq.get(0).valid := true.B
+      m_spi.io.b_dreq.get(0).valid := m_spi.io.b_creq.get(0).ready
       switch(r_cnt) {
         is (0.U) {m_spi.io.b_dreq.get(0).data.get := r_addr(23,  16)}
         is (1.U) {m_spi.io.b_dreq.get(0).data.get := r_addr(15,  8)}
