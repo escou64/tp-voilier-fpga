@@ -61,3 +61,19 @@ set_property -dict { PACKAGE_PIN P17   IOSTANDARD LVCMOS33 } [get_ports { o_gpio
 #set_property -dict { PACKAGE_PIN B18   IOSTANDARD LVCMOS33 } [get_ports { o_uart_tx }]; 
 #set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS33 } [get_ports { i_uart_rx }]; 
 #set_property -dict { PACKAGE_PIN E15   IOSTANDARD LVCMOS33 } [get_ports { i_uart_cts_n }];
+
+
+# SPI Flash
+# set_property -dict { PACKAGE_PIN K17   IOSTANDARD LVCMOS33 } [get_ports { t_spi_dq[0] }]; 
+# set_property -dict { PACKAGE_PIN K18   IOSTANDARD LVCMOS33 } [get_ports { t_spi_dq[1] }]; 
+# set_property -dict { PACKAGE_PIN L14   IOSTANDARD LVCMOS33 } [get_ports { t_spi_dq[2] }]; 
+# set_property -dict { PACKAGE_PIN M14   IOSTANDARD LVCMOS33 } [get_ports { t_spi_dq[3] }]; 
+# set_property -dict { PACKAGE_PIN L13   IOSTANDARD LVCMOS33 } [get_ports { o_spi_csn }]; 
+# set_property -dict { PACKAGE_PIN L16   IOSTANDARD LVCMOS33 } [get_ports { o_spi_sclk }]; 
+
+set_property -dict { PACKAGE_PIN V15   IOSTANDARD LVCMOS33 } [get_ports { o_spi_csn }];     # IO0 
+set_property -dict { PACKAGE_PIN U16   IOSTANDARD LVCMOS33 } [get_ports { o_spi_sclk }];    # IO1
+set_property -dict { PACKAGE_PIN P14   IOSTANDARD LVCMOS33 } [get_ports { t_spi_dq[0] }];   # IO2 
+set_property -dict { PACKAGE_PIN T11   IOSTANDARD LVCMOS33 } [get_ports { t_spi_dq[1] }];   # IO3 
+set_property -dict { PACKAGE_PIN R12   IOSTANDARD LVCMOS33 } [get_ports { t_spi_dq[2] }];   # IO4 
+set_property -dict { PACKAGE_PIN T14   IOSTANDARD LVCMOS33 } [get_ports { t_spi_dq[3] }];   # IO5 

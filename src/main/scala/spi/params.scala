@@ -1,10 +1,10 @@
 /*
- * File: params.scala                                                          *
+ * File: params.scala
  * Created Date: 2022-11-01 06:27:51 pm                                        *
  * Author: Mathieu Escouteloup                                                 *
  * -----                                                                       *
- * Last Modified: 2022-11-01 08:04:09 pm                                       *
- * Modified By: Mathieu Escouteloup                                            *
+ * Last Modified: 2022-11-14 10:53:58 am
+ * Modified By: Mathieu Escouteloup
  * -----                                                                       *
  * License: See LICENSE.md                                                     *
  * Copyright (c) 2022 ISARD                                                    *
@@ -22,14 +22,19 @@ import chisel3.util._
 import tp.common.gen._
 
 
-trait SpiParams {
+trait SpiMasterParams extends GenParams {
   def debug: Boolean
-  def nDataBit: Int
+  def nDataByte: Int
+  def nDataBit: Int = nDataByte * 8
   def nSlave: Int 
+  def useRegMem: Boolean
+  def nBufferDepth: Int
 }
 
-case class SpiConfig (
+case class SpiMasterConfig (
   debug: Boolean,
-  nDataBit: Int,
-  nSlave: Int 
-) extends SpiParams
+  nDataByte: Int,
+  nSlave: Int,
+  useRegMem: Boolean,
+  nBufferDepth: Int
+) extends SpiMasterParams

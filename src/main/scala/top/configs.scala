@@ -3,7 +3,7 @@
  * Created Date: 2022-11-01 06:27:51 pm                                        *
  * Author: Mathieu Escouteloup                                                 *
  * -----                                                                       *
- * Last Modified: 2022-11-14 09:38:54 am
+ * Last Modified: 2022-11-14 01:57:33 pm
  * Modified By: Mathieu Escouteloup
  * -----                                                                       *
  * License: See LICENSE.md                                                     *
@@ -13,18 +13,15 @@
  */
 
 
-package tp.spi
+package tp.top
 
 import chisel3._
 import chisel3.experimental.IO
 import chisel3.util._
 
 
-object SpiMasterConfigBase extends SpiMasterConfig (
+object TopConfigBase extends TopConfig (
   debug = true,
-  nDataByte = 4,
-  nSlave = 1,
-  useRegMem = true,
-  nBufferDepth = 8
+  nDataByte = 4
 )
 

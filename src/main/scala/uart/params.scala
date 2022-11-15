@@ -1,9 +1,9 @@
 /*
- * File: configs.scala
+ * File: params.scala
  * Created Date: 2022-11-01 06:27:51 pm                                        *
  * Author: Mathieu Escouteloup                                                 *
  * -----                                                                       *
- * Last Modified: 2022-11-14 09:38:54 am
+ * Last Modified: 2022-11-14 10:54:06 am
  * Modified By: Mathieu Escouteloup
  * -----                                                                       *
  * License: See LICENSE.md                                                     *
@@ -13,18 +13,26 @@
  */
 
 
-package tp.spi
+package tp.uart
 
 import chisel3._
 import chisel3.experimental.IO
 import chisel3.util._
 
+import tp.common.gen._
 
-object SpiMasterConfigBase extends SpiMasterConfig (
-  debug = true,
-  nDataByte = 4,
-  nSlave = 1,
-  useRegMem = true,
-  nBufferDepth = 8
-)
 
+trait UartParams extends GenParams {
+  def debug: Boolean
+  def nDataByte: Int
+  def nDataBit: Int = nDataByte * 8
+  def useRegMem: Boolean
+  def nBufferDepth: Int
+}
+
+case class UartConfig (
+  debug: Boolean,
+  nDataByte: Int,
+  useRegMem: Boolean,
+  nBufferDepth: Int
+) extends UartParams

@@ -1,9 +1,9 @@
 /*
- * File: adder.scala
+ * File: timer.scala
  * Created Date: 2022-10-28 04:10:44 pm
  * Author: Mathieu Escouteloup
  * -----
- * Last Modified: 2022-10-28 04:14:22 pm
+ * Last Modified: 2022-11-07 03:29:12 pm
  * Modified By: Mathieu Escouteloup
  * -----
  * License: See LICENSE.md
@@ -23,7 +23,7 @@ class Timer(nBit: Int) extends Module {
     val i_wen = Input(Bool())
     val i_wdata = Input(UInt(nBit.W))
 
-    val o_int = Output(Bool())
+    val o_irq = Output(Bool())
   })
 
   val r_cnt = Reg(UInt(nBit.W))
@@ -37,7 +37,7 @@ class Timer(nBit: Int) extends Module {
     r_arr := io.i_wdata
   }
 
-  io.o_int := (r_cnt >= r_arr)
+  io.o_irq := (r_cnt >= r_arr)
 
 }
 
